@@ -1,11 +1,12 @@
 ### Tab completion for Samtools ###
 
-So far I have only implemented completion for the main subcommand and for mpileup, but it shouldn't be very difficult to implement it for all other subcommands. I just first want to see what people think. 
-
-#### Installation: ####
-Source samtools_tab_completion from your .bashrc, and it seems to do the rest automatically. People that actually know how Bash works may think that this is a bad idea, I'm not sure myself. 
-
 #### Usage: ####
+
+	$ sh generate_completion_file.sh > /where/to/save/tab/completion/files
+
+This file can be stored anywhere, and then sourced from .bashrc. The default location for storing tab completion files is /etc/bash_completion.d/
+
+#### Examples: ####
 
 	$ samtools <TAB><TAB>
 	addreplacerg  collate       faidx         flags         merge         reheader      stats       

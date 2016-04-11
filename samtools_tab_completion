@@ -37,7 +37,8 @@ _samtools_options()
 		fi
 	fi
 
-	# Default case: Print current contents of PWD with tab completion
+	# Default case: Assume user is looking for files
+	compopt -o filenames # Don't append a space
 	COMPREPLY=($(compgen -f "${cur}"))
 	return 0
 }

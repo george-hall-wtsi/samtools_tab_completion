@@ -33,3 +33,7 @@ Source samtools_tab_completion from your .bashrc, and it seems to do the rest au
 	--excl-flags        --illumina1.3+      --min-MQ            --per-sample-mF     --tandem-qual
 	--exclude-RG        --incl-flags        --no-BAQ            --platforms         --uncompressed
 	--ext-prob          --input-fmt-option  --open-prob         --positions         --VCF
+
+
+#### Samtools: ####
+https://github.com/samtools/samtools

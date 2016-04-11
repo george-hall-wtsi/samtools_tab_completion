@@ -1,12 +1,18 @@
 
-# This script generates all subcommands, and all options for each subcommand
+# This script generates all subcommands and all options for each subcommand
+# and prints them to stdout. It is up to the user to store the resulting file
+# in the correct location.
 
-# To get all subcommands:
-# samtools 2>&1 | awk '{if ($1 != "" && $1 != "Program:" && $1 != "Usage:" && $1 != "Version:" && $1 != "Commands:" && $1 != "--") print $1}' | xargs -n 1 -I @ printf @" "; printf "\n"
+# Get subcommands:
 
-# To get options for subcommands:
-# samtools <subcommand> 2>&1 | grep -oh "\(\-\-\)\([[:alnum:]]\|\-\)* " | xargs -I @ printf @" "; printf "\n"
-# This matches with two double dashed (i.e. a long option) followed by alphanums or dashes. The reason I couldn't use [[:graph:]] is that it could include commas, which are used to separate the short version of long options, which start with double dashes when they are >= 2 chars long.
+SUBCOMMANDS=$(samtools 2>&1 | \
+	awk '{if ($1 != "" && \
+	$1 != "Program:" && \
+	$1 != "Usage:" && \
+	$1 != "Version:" && \
+	$1 != "Commands:" && \
+	$1 != "--") print $1}' | \
+	xargs -n 1 -I @ printf @" ")
 
 out_str="_samtools_options()\n"
 out_str=$out_str"{\n"
@@ -17,7 +23,6 @@ out_str=$out_str"\tprev=\"\${COMP_WORDS[COMP_CWORD-1]}\"\n\n"
 
 out_str=$out_str"\tif [[ \$COMP_CWORD == 1 ]] ; then\n"
 out_str=$out_str"\t\t# Complete main subcommand\n"
-SUBCOMMANDS=$(samtools 2>&1 | awk '{if ($1 != "" && $1 != "Program:" && $1 != "Usage:" && $1 != "Version:" && $1 != "Commands:" && $1 != "--") print $1}' | xargs -n 1 -I @ printf @" ")
 out_str=$out_str"\t\topts=\"$SUBCOMMANDS\b\"\n\n"
 
 out_str=$out_str"\t\tCOMPREPLY=(\$(compgen -W \"\${opts}\" -- \${cur}))\n"
@@ -26,7 +31,16 @@ out_str=$out_str"\t\treturn 0\n\n"
 printf "$out_str"
 
 for SUB in $SUBCOMMANDS; do
-	SUB_OPTS=$(samtools $SUB 2>&1 | grep -oh "\(\-\-\)\([[:alnum:]]\|\-\)* " | xargs -I @ printf @)
+
+	# This matches with two double dashed (i.e. a long option) followed by alphanums
+	# or dashes. The reason I couldn't use [[:graph:]] is that it could include commas,
+	# which are used to separate the short version of long options, which start with
+	# double dashes when they are >= 2 chars long.
+	SUB_OPTS=$(samtools $SUB 2>&1 | \
+		grep -oh "\(\-\-\)\([[:alnum:]]\|\-\)* " | \
+		xargs -I @ printf @)
+
+	# Only print options when option list is non-empty
 	OPTS_LEN=${#SUB_OPTS}
 	if [ $OPTS_LEN != 0 ]; then
 		printf "\telif [[ \$prev == \"$SUB\" ]]; then\n"
@@ -38,6 +52,7 @@ for SUB in $SUBCOMMANDS; do
 		printf "\t\tfi\n\n"
 	fi
 done
+
 printf "\tfi\n\n"
 
 out_str="\t# Default case: Assume user is looking for files\n"
@@ -46,4 +61,5 @@ out_str=$out_str"\tCOMPREPLY=(\$(compgen -f \"\${cur}\"))\n"
 out_str=$out_str"\treturn 0\n"
 out_str=$out_str"}\n"
 out_str=$out_str"complete -F _samtools_options samtools"
+
 printf "$out_str"

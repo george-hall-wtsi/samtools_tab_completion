@@ -4,9 +4,11 @@
 
 	$ sh generate_completion_file.sh > /where/to/save/tab/completion/files
 
-This file can be stored anywhere, and then sourced from .bashrc. The default location for storing tab completion files is /etc/bash_completion.d/
+I think this file can be stored anywhere, and then sourced from .bashrc. The default location for storing tab completion files is /etc/bash_completion.d/
 
 #### Examples: ####
+
+Nothing too exciting here - hopefully fairly standard tab completion behaviour...
 
 	$ samtools <TAB><TAB>
 	addreplacerg  collate       faidx         flags         merge         reheader      stats       

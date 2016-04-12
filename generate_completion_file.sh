@@ -1,7 +1,10 @@
 
-# This script generates all subcommands and all options for each subcommand
-# and prints them to stdout. It is up to the user to store the resulting file
-# in the correct location.
+
+# This script works out all subcommands and their corresponding options, and 
+# then prints a file allowing for tab completion of these subcommands and their 
+# options to stdout. It is up to the user to store this file in the correct 
+# location (see README).
+
 
 # Get subcommands:
 

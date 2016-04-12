@@ -23,7 +23,7 @@ out_str=$out_str"\tprev=\"\${COMP_WORDS[COMP_CWORD-1]}\"\n\n"
 
 out_str=$out_str"\tif [[ \$COMP_CWORD == 1 ]] ; then\n"
 out_str=$out_str"\t\t# Complete main subcommand\n"
-out_str=$out_str"\t\topts=\"$SUBCOMMANDS\b\"\n\n"
+out_str=$out_str"\t\topts=\"$SUBCOMMANDS\"\n\n"
 
 out_str=$out_str"\t\tCOMPREPLY=(\$(compgen -W \"\${opts}\" -- \${cur}))\n"
 out_str=$out_str"\t\treturn 0\n\n"
@@ -46,7 +46,7 @@ for SUB in $SUBCOMMANDS; do
 		printf "\telif [[ \$prev == \"$SUB\" ]]; then\n"
 		printf "\t\t# Completion for $SUB - only triggered after first '-'\n"
 		printf "\t\tif [[ \${cur} == -* ]] ; then\n"
-		printf "\t\t\topts=\"$SUB_OPTS\b\"\n\n"
+		printf "\t\t\topts=\"$SUB_OPTS\"\n\n"
 		printf "\t\t\tCOMPREPLY=(\$(compgen -W \"\${opts}\" -- \${cur}))\n"
 		printf "\t\t\treturn 0\n"
 		printf "\t\tfi\n\n"

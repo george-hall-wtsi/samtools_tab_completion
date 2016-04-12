@@ -7,7 +7,7 @@ _samtools_options()
 
 	if [[ $COMP_CWORD == 1 ]] ; then
 		# Complete main subcommand
-		opts="dict faidx index calmd fixmate reheader rmdup targetcut addreplacerg collate cat merge mpileup sort split quickcheck fastq fasta bedcov depth flagstat idxstats phase stats flags tview view depad "
+		opts="dict faidx index calmd fixmate reheader rmdup targetcut addreplacerg collate cat merge mpileup sort split quickcheck fastq fasta bedcov depth flagstat idxstats phase stats flags tview view depad "
 
 		COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 		return 0
@@ -15,7 +15,7 @@ _samtools_options()
 	elif [[ $prev == "dict" ]]; then
 		# Completion for dict - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--assembly --no-header --output --species --uri "
+			opts="--assembly --no-header --output --species --uri "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -24,7 +24,7 @@ _samtools_options()
 	elif [[ $prev == "calmd" ]]; then
 		# Completion for calmd - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option --output-fmt --output-fmt-option --reference "
+			opts="--input-fmt-option --output-fmt --output-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -33,7 +33,7 @@ _samtools_options()
 	elif [[ $prev == "fixmate" ]]; then
 		# Completion for fixmate - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option --output-fmt --output-fmt-option --reference "
+			opts="--input-fmt-option --output-fmt --output-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -42,7 +42,7 @@ _samtools_options()
 	elif [[ $prev == "reheader" ]]; then
 		# Completion for reheader - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--no-PG --in-place "
+			opts="--no-PG --in-place "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -51,7 +51,7 @@ _samtools_options()
 	elif [[ $prev == "rmdup" ]]; then
 		# Completion for rmdup - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option --output-fmt --output-fmt-option --reference "
+			opts="--input-fmt-option --output-fmt --output-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -60,7 +60,7 @@ _samtools_options()
 	elif [[ $prev == "targetcut" ]]; then
 		# Completion for targetcut - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option --reference "
+			opts="--input-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -69,7 +69,7 @@ _samtools_options()
 	elif [[ $prev == "addreplacerg" ]]; then
 		# Completion for addreplacerg - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt --input-fmt-option --output-fmt --output-fmt-option --reference "
+			opts="--input-fmt --input-fmt-option --output-fmt --output-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -78,7 +78,7 @@ _samtools_options()
 	elif [[ $prev == "collate" ]]; then
 		# Completion for collate - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option --output-fmt --output-fmt-option --reference "
+			opts="--input-fmt-option --output-fmt --output-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -87,7 +87,7 @@ _samtools_options()
 	elif [[ $prev == "merge" ]]; then
 		# Completion for merge - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--threads --input-fmt-option --output-fmt --output-fmt-option --reference "
+			opts="--threads --input-fmt-option --output-fmt --output-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -96,7 +96,7 @@ _samtools_options()
 	elif [[ $prev == "mpileup" ]]; then
 		# Completion for mpileup - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--count-orphans --bam-list --no-BAQ --adjust-MQ --max-depth --redo-BAQ --fasta-ref --exclude-RG --positions --min-MQ --min-BQ --region --ignore-RG --incl-flags --excl-flags --ignore-overlaps --output --BCF --VCF --output-BP --output-MQ --output-tags --uncompressed --ext-prob --gap-frac --tandem-qual --skip-indels --max-idepth --min-ireads --open-prob --per-sample-mF --platforms --input-fmt-option --reference "
+			opts="--count-orphans --bam-list --no-BAQ --adjust-MQ --max-depth --redo-BAQ --fasta-ref --exclude-RG --positions --min-MQ --min-BQ --region --ignore-RG --incl-flags --excl-flags --ignore-overlaps --output --BCF --VCF --output-BP --output-MQ --output-tags --uncompressed --ext-prob --gap-frac --tandem-qual --skip-indels --max-idepth --min-ireads --open-prob --per-sample-mF --platforms --input-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -105,7 +105,7 @@ _samtools_options()
 	elif [[ $prev == "sort" ]]; then
 		# Completion for sort - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--threads --input-fmt-option --output-fmt --output-fmt-option --reference "
+			opts="--threads --input-fmt-option --output-fmt --output-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -114,7 +114,7 @@ _samtools_options()
 	elif [[ $prev == "split" ]]; then
 		# Completion for split - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option --output-fmt --output-fmt-option --reference "
+			opts="--input-fmt-option --output-fmt --output-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -123,7 +123,7 @@ _samtools_options()
 	elif [[ $prev == "fastq" ]]; then
 		# Completion for fastq - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option --reference "
+			opts="--input-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -132,7 +132,7 @@ _samtools_options()
 	elif [[ $prev == "fasta" ]]; then
 		# Completion for fasta - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option --reference "
+			opts="--input-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -141,7 +141,7 @@ _samtools_options()
 	elif [[ $prev == "bedcov" ]]; then
 		# Completion for bedcov - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option --reference "
+			opts="--input-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -150,7 +150,7 @@ _samtools_options()
 	elif [[ $prev == "depth" ]]; then
 		# Completion for depth - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option --reference "
+			opts="--input-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -159,7 +159,7 @@ _samtools_options()
 	elif [[ $prev == "flagstat" ]]; then
 		# Completion for flagstat - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option "
+			opts="--input-fmt-option "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -168,7 +168,7 @@ _samtools_options()
 	elif [[ $prev == "phase" ]]; then
 		# Completion for phase - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option --output-fmt --output-fmt-option --reference "
+			opts="--input-fmt-option --output-fmt --output-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -177,7 +177,7 @@ _samtools_options()
 	elif [[ $prev == "stats" ]]; then
 		# Completion for stats - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--coverage --remove-dups --required-flag --filtering-flag --GC-depth --help --insert-size --id --read-length --most-inserts --split-prefix --trim-quality --ref-seq --sam --split --target-regions --sparse --input-fmt-option --reference "
+			opts="--coverage --remove-dups --required-flag --filtering-flag --GC-depth --help --insert-size --id --read-length --most-inserts --split-prefix --trim-quality --ref-seq --sam --split --target-regions --sparse --input-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -186,7 +186,7 @@ _samtools_options()
 	elif [[ $prev == "tview" ]]; then
 		# Completion for tview - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--input-fmt-option --reference "
+			opts="--input-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -195,7 +195,7 @@ _samtools_options()
 	elif [[ $prev == "view" ]]; then
 		# Completion for view - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--threads --input-fmt-option --output-fmt --output-fmt-option --reference "
+			opts="--threads --input-fmt-option --output-fmt --output-fmt-option --reference "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0
@@ -204,7 +204,7 @@ _samtools_options()
 	elif [[ $prev == "depad" ]]; then
 		# Completion for depad - only triggered after first '-'
 		if [[ ${cur} == -* ]] ; then
-			opts="--reference --input-fmt-option --output-fmt --output-fmt-option "
+			opts="--reference --input-fmt-option --output-fmt --output-fmt-option "
 
 			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 			return 0

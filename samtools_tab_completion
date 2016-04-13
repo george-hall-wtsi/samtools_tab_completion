@@ -7,11 +7,26 @@ _samtools_options()
 
 	if [[ $COMP_CWORD == 1 ]] ; then
 		# Complete main subcommand
-		opts="addreplacerg bedcov calmd cat collate depad depth dict faidx fasta fastq fixmate flags flagstat idxstats index merge mpileup phase quickcheck reheader rmdup sort split stats targetcut tview view"
+		opts="addreplacerg bedcov calmd cat collate "
+		opts=$opts"depad depth dict faidx fasta "
+		opts=$opts"fastq fixmate flags flagstat idxstats "
+		opts=$opts"index merge mpileup phase quickcheck "
+		opts=$opts"reheader rmdup sort split stats "
+		opts=$opts"targetcut tview view"
 
 	elif [[ $prev == "mpileup" ]]; then
 		# Completion for mpileup
-		 opts="--illumina1.3+ --count-orphans --bam-list --no-BAQ --adjust-MQ --max-depth --redo-BAQ --fasta-ref --exclude-RG --positions --min-MQ --min-BQ --region --ignore-RG --incl-flags --excl-flags --ignore-overlaps --output --BCF --VCF --output-BP --output-MQ --output-tags --uncompressed --ext-prob --gap-frac --tandem-qual --skip-indels --max-idepth --min-ireads --open-prob --per-sample-mF --platforms --input-fmt-option --reference"
+		 opts="--illumina1.3+ --count-orphans --bam-list "
+		 opts=$opts"--no-BAQ --adjust-MQ --max-depth "
+		 opts=$opts"--redo-BAQ --fasta-ref --exclude-RG "
+		 opts=$opts"--positions --min-MQ --min-BQ --region "
+		 opts=$opts"--ignore-RG --incl-flags --excl-flags "
+		 opts=$opts"--ignore-overlaps --output --BCF --VCF "
+		 opts=$opts"--output-BP --output-MQ --output-tags "
+		 opts=$opts"--uncompressed --ext-prob --gap-frac "
+		 opts=$opts"--tandem-qual --skip-indels --max-idepth "
+		 opts=$opts"--min-ireads --open-prob --per-sample-mF "
+		 opts=$opts"--platforms --input-fmt-option --reference"
 
 	fi
 	

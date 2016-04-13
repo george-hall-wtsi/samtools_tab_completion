@@ -7,8 +7,10 @@ _samtools_options()
 
 	# Basic options
 	opts="addreplacerg bedcov calmd cat collate depad depth dict faidx fasta fastq fixmate flags flagstat idxstats index merge mpileup phase quickcheck reheader rmdup sort split stats targetcut tview view"
-	
-	COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+
+	if [[ $COMP_CWORD == 1 ]] ; then
+		COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+	fi
 
 	return 0
 }

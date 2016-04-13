@@ -1,14 +1,13 @@
 _samtools_options()
 {
-	local cur prev opts base
+	local cur prev opts
 	COMPREPLY=()
 	cur="${COMP_WORDS[COMP_CWORD]}"
 	prev="${COMP_WORDS[COMP_CWORD-1]}"
 
-	# Basic options
-	opts="addreplacerg bedcov calmd cat collate depad depth dict faidx fasta fastq fixmate flags flagstat idxstats index merge mpileup phase quickcheck reheader rmdup sort split stats targetcut tview view"
-
 	if [[ $COMP_CWORD == 1 ]] ; then
+		# Complete main subcommand
+		opts="addreplacerg bedcov calmd cat collate depad depth dict faidx fasta fastq fixmate flags flagstat idxstats index merge mpileup phase quickcheck reheader rmdup sort split stats targetcut tview view"
 		COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 	fi
 

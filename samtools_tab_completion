@@ -13,24 +13,32 @@ _samtools_options()
 		opts=$opts"index merge mpileup phase quickcheck "
 		opts=$opts"reheader rmdup sort split stats "
 		opts=$opts"targetcut tview view"
+	
+		COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+		return 0
 
 	elif [[ $prev == "mpileup" ]]; then
-		# Completion for mpileup
-		 opts="--illumina1.3+ --count-orphans --bam-list "
-		 opts=$opts"--no-BAQ --adjust-MQ --max-depth "
-		 opts=$opts"--redo-BAQ --fasta-ref --exclude-RG "
-		 opts=$opts"--positions --min-MQ --min-BQ --region "
-		 opts=$opts"--ignore-RG --incl-flags --excl-flags "
-		 opts=$opts"--ignore-overlaps --output --BCF --VCF "
-		 opts=$opts"--output-BP --output-MQ --output-tags "
-		 opts=$opts"--uncompressed --ext-prob --gap-frac "
-		 opts=$opts"--tandem-qual --skip-indels --max-idepth "
-		 opts=$opts"--min-ireads --open-prob --per-sample-mF "
-		 opts=$opts"--platforms --input-fmt-option --reference"
+		# Completion for mpileup - only triggered after first '-'
+		if [[ ${cur} == -* ]] ; then
+			opts="--illumina1.3+ --count-orphans --bam-list "
+			opts=$opts"--no-BAQ --adjust-MQ --max-depth "
+			opts=$opts"--redo-BAQ --fasta-ref --exclude-RG "
+			opts=$opts"--positions --min-MQ --min-BQ --region "
+			opts=$opts"--ignore-RG --incl-flags --excl-flags "
+			opts=$opts"--ignore-overlaps --output --BCF --VCF "
+			opts=$opts"--output-BP --output-MQ --output-tags "
+			opts=$opts"--uncompressed --ext-prob --gap-frac "
+			opts=$opts"--tandem-qual --skip-indels --max-idepth "
+			opts=$opts"--min-ireads --open-prob --per-sample-mF "
+			opts=$opts"--platforms --input-fmt-option --reference"
 
+			COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+			return 0
+		fi
 	fi
-	
-	COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+
+	# Default case: Print current contents of PWD with tab completion
+	COMPREPLY=($(compgen -f "${cur}"))
 	return 0
 }
 complete -F _samtools_options samtools

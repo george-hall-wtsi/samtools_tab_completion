@@ -8,9 +8,14 @@ _samtools_options()
 	if [[ $COMP_CWORD == 1 ]] ; then
 		# Complete main subcommand
 		opts="addreplacerg bedcov calmd cat collate depad depth dict faidx fasta fastq fixmate flags flagstat idxstats index merge mpileup phase quickcheck reheader rmdup sort split stats targetcut tview view"
-		COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
-	fi
 
+	elif [[ $prev == "mpileup" ]]; then
+		# Completion for mpileup
+		 opts="--illumina1.3+ --count-orphans --bam-list --no-BAQ --adjust-MQ --max-depth --redo-BAQ --fasta-ref --exclude-RG --positions --min-MQ --min-BQ --region --ignore-RG --incl-flags --excl-flags --ignore-overlaps --output --BCF --VCF --output-BP --output-MQ --output-tags --uncompressed --ext-prob --gap-frac --tandem-qual --skip-indels --max-idepth --min-ireads --open-prob --per-sample-mF --platforms --input-fmt-option --reference"
+
+	fi
+	
+	COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 	return 0
 }
 complete -F _samtools_options samtools
